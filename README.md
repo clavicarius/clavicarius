@@ -1,7 +1,6 @@
 ## Hi there 👋
 
-Unterwegs zwischen Optimismus und Realitätssinn — mit Freude an guten Entscheidungen und funktionierenden Lösungen.
-Dabei verbinde ich **pragmatischen Realismus** mit einer **optimistischen Denkweise**, um fundierte Entscheidungen und **nachhaltige Lösungen** zu entwickeln.
+Unterwegs zwischen Optimismus und Realitätssinn. Dabei verbinde ich **pragmatischen Realismus** mit einer **optimistischen Denkweise**, um fundierte Entscheidungen und **nachhaltige Lösungen** zu entwickeln.
 
 > Ich glaube an Fortschritt mit Augenmaß: optimistisch genug für neue Ideen, realistisch genug für gute Entscheidungen.
 
