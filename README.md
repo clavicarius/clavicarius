@@ -17,17 +17,19 @@ Neben den technischen Themen gilt mein Interesse vorallem der **Entwicklung von 
 ![PHP](https://img.shields.io/badge/-PHP-333?logo=php)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-333?logo=typescript)
 
-### Backend & DevOps
+### Backend
 ![GitHub Actions](https://img.shields.io/badge/GitHub-actions-green?logo=github)
 ![GitLab Actions](https://img.shields.io/badge/GitLab-actions-green?logo=gitlab)
 
+### DevOps
 ![Docker](https://img.shields.io/badge/-Docker-333?logo=docker)
 ![Linux](https://img.shields.io/badge/-Linux-333?logo=linux)
 ![NAS](https://img.shields.io/badge/NAS-Synology-blue?logo=synology)
 ![Windows](https://img.shields.io/badge/-Windows-333?logo=windows)
 
 ### AI & Cloud
-![Cursor](https://img.shields.io/badge/-cursor-333?logo=cursor)
+![Cursor](https://img.shields.io/badge/-Cursor-333?logo=cursor)
+![Copilot](https://img.shields.io/badge/-CoPilot-333?logo=copilot)
 ![OpenAI](https://img.shields.io/badge/-OpenAI-333?logo=openai)
 
 ---
