@@ -9,7 +9,7 @@ Unterwegs zwischen Optimismus und Realitätssinn. Dabei verbinde ich **pragmatis
 ## 🚀 Tech Stack
 
 ### Languages
-![C++](https://img.shields.io/badge/-C++-333?logo=c++)
+![C++](https://img.shields.io/badge/-C++-333?logo=cplusplus)
 ![Python](https://img.shields.io/badge/-Python-333?logo=python)
 ![PHP](https://img.shields.io/badge/-PHP-333?logo=php)
 ![TypeScript](https://img.shields.io/badge/-TypeScript-333?logo=typescript)
