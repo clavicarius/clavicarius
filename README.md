@@ -2,7 +2,10 @@
 
 Unterwegs zwischen Optimismus und Realitätssinn. Dabei verbinde ich **pragmatischen Realismus** mit einer **optimistischen Denkweise**, um fundierte Entscheidungen und **nachhaltige Lösungen** zu entwickeln.
 
+Neben den technischen Themen gilt mein Interesse vorallem der **Entwicklung von Menschen**.
+
 > Ich glaube an Fortschritt mit Augenmaß: optimistisch genug für neue Ideen, realistisch genug für gute Entscheidungen.
+ 
 
 ---
 
