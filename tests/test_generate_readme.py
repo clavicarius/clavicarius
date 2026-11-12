@@ -56,8 +56,8 @@ class GenerateReadmeTests(unittest.TestCase):
                 "columns": 4,
                 "show_language": True,
                 "show_topics": True,
-                "show_stars": True,
-                "show_forks": True,
+                "show_stars": False,
+                "show_forks": False,
             },
         )
 
@@ -66,7 +66,9 @@ class GenerateReadmeTests(unittest.TestCase):
         self.assertIn("&lt;img src=x onerror=alert(1)&gt;", rendered)
         self.assertIn("safe&amp;sound", rendered)
         self.assertNotIn("javascript:", rendered)
-        self.assertIn("Custom social preview", rendered)
+        self.assertNotIn("Custom social preview", rendered)
+        self.assertNotIn("Stars:", rendered)
+        self.assertNotIn("Forks:", rendered)
         self.assertEqual(rendered.count("<td "), 4)
 
     def test_non_public_repository_is_rejected(self):

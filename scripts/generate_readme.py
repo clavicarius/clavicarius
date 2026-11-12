@@ -190,7 +190,7 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
                     f'<span class="project-language-indicator" style="color:{escape(color)}" aria-hidden="true">●</span> '
                     f"{label}"
                 )
-            metadata.append(f"<strong>Language:</strong> {label}")
+            metadata.append(f'<span class="project-language"><strong>Language:</strong> {label}</span>')
 
     if settings["show_topics"]:
         topic_data = repository.get("repositoryTopics")
@@ -204,19 +204,6 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
         ]
         if topics:
             metadata.append(f"<strong>Topics:</strong> {' · '.join(topics)}")
-
-    if settings["show_stars"] and isinstance(repository.get("stargazers"), dict):
-        count = repository["stargazers"].get("totalCount")
-        if isinstance(count, int) and not isinstance(count, bool):
-            metadata.append(f"<strong>Stars:</strong> {count}")
-
-    if settings["show_forks"] and isinstance(repository.get("forks"), dict):
-        count = repository["forks"].get("totalCount")
-        if isinstance(count, int) and not isinstance(count, bool):
-            metadata.append(f"<strong>Forks:</strong> {count}")
-
-    if repository.get("usesCustomOpenGraphImage") is True:
-        metadata.append("<strong>Custom social preview</strong>")
 
     if metadata:
         content.append(f'<p class="project-metadata">{" &nbsp;·&nbsp; ".join(metadata)}</p>')

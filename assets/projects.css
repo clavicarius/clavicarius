@@ -60,6 +60,11 @@
   color: #57606a;
 }
 
+.project-language {
+  font-size: 0.8em;
+  color: #57606a;
+}
+
 .project-language-indicator {
   margin-right: 4px;
 }

@@ -12,5 +12,5 @@ settings:
   columns: 2
   show_language: true
   show_topics: true
-  show_stars: true
-  show_forks: true
+  show_stars: false
+  show_forks: false
