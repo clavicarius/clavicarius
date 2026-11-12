@@ -68,6 +68,23 @@ class GenerateReadmeTests(unittest.TestCase):
         self.assertNotIn("javascript:", rendered)
         self.assertNotIn("Topics:", rendered)
 
+    def test_render_projects_url_encodes_hash_in_language_names(self):
+        repository = {
+            "name": "csharp-project",
+            "url": "https://github.com/example/csharp-project",
+            "description": "A C# project",
+            "primaryLanguage": {"name": "C#"},
+        }
+
+        rendered = render_projects(
+            [repository],
+            {"show_language": True},
+        )
+
+        self.assertIn("%23", rendered)
+        self.assertNotIn("-C#-", rendered)
+        self.assertIn("-C%23-", rendered)
+
     def test_non_public_repository_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "only PUBLIC repositories"):
             require_public_repository(

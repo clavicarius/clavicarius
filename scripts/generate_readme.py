@@ -180,7 +180,7 @@ def render_projects(repositories: list[dict[str, Any]], settings: dict[str, Any]
             if language and isinstance(language, dict):
                 lang_name = language.get("name")
                 if lang_name:
-                    lang_name_escaped = lang_name.replace(" ", "%20")
+                    lang_name_escaped = lang_name.replace("#", "%23").replace(" ", "%20")
                     language_badge = f'![{lang_name}](https://img.shields.io/badge/-{lang_name_escaped}-333?style=flat)'
         
         lines.append(f"| [{name}]({url}) | {desc} | {language_badge} |")
