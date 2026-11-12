@@ -165,16 +165,16 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
     if repo_url is None:
         raise ValueError(f"Repository {repository['name']!r} has an invalid URL")
 
-    content = []
+    content = ['<div class="project-content">']
 
     content.append(f'<h3><a href="{escape(repo_url)}">{name}</a></h3>')
 
     image_url = safe_http_url(repository.get("openGraphImageUrl"))
     if image_url:
         content.append(
-            f'<p><a href="{escape(repo_url)}">'
+            f'<div class="project-image"><a href="{escape(repo_url)}">'
             f'<img src="{escape(image_url)}" '
-            f'alt="Open Graph preview for {name}" loading="lazy"></a></p>',
+            f'alt="Open Graph preview for {name}" loading="lazy"></a></div>',
         )
 
     description = repository.get("description")
@@ -183,7 +183,7 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
 
     homepage = safe_http_url(repository.get("homepageUrl"))
     if homepage:
-        content.append(f'<p><a href="{escape(homepage)}">Project website</a></p>')
+        content.append(f'<p class="project-website"><a href="{escape(homepage)}">Project website</a></p>')
 
     if settings["show_topics"]:
         topic_data = repository.get("repositoryTopics")
@@ -196,7 +196,7 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
             and node["topic"].get("name")
         ]
         if topics:
-            content.append(f"<p style=\"font-size:0.9em;margin-top:8px;\"><strong>Topics:</strong> {' · '.join(topics)}</p>")
+            content.append(f'<p class="project-topics"><strong>Topics:</strong> {" · ".join(topics)}</p>')
 
     metadata: list[str] = []
     if settings["show_language"]:
@@ -222,8 +222,9 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
             metadata.append(f"<strong>Stars:</strong> {count}")
 
     if metadata:
-        content.append(f'<p class="project-metadata" style="font-size:0.85em;color:#666;margin-top:8px;">{" &nbsp;·&nbsp; ".join(metadata)}</p>')
+        content.append(f'<p class="project-metadata">{" · ".join(metadata)}</p>')
 
+    content.append('</div>')
     return "\n".join(content)
 
 
@@ -235,18 +236,34 @@ def render_projects(
 
     columns = settings["columns"]
     width = f"{100 / columns:g}%"
+    
+    html_out = '<style>\n'
+    html_out += '.projects-table { width:100%; border-collapse:separate; border-spacing:12px; }\n'
+    html_out += '.project-cell { width:' + width + '; padding:12px; border:1px solid #d0d7de; border-radius:6px; vertical-align:top; transition:all 0.3s ease; background-color:#fff; }\n'
+    html_out += '.project-cell:hover { background-color:#f6f8fa; box-shadow:0 4px 8px rgba(0,0,0,0.1); }\n'
+    html_out += '.project-content { display:flex; flex-direction:column; height:100%; }\n'
+    html_out += '.project-content h3 { margin:0 0 8px 0; }\n'
+    html_out += '.project-content p { margin:4px 0; }\n'
+    html_out += '.project-image { margin:4px 0 8px 0; }\n'
+    html_out += '.project-website { margin-top:auto; }\n'
+    html_out += '.project-topics { font-size:0.9em; margin-top:8px; }\n'
+    html_out += '.project-metadata { font-size:0.85em; color:#666; margin-top:8px; }\n'
+    html_out += '</style>\n'
+    
     rows = []
     for offset in range(0, len(repositories), columns):
         cells = [
-            f'<td style="width:{width};padding:12px;vertical-align:top;border:1px solid #d0d7de;border-radius:6px;transition:all 0.3s ease;background-color:#fff;"onmouseover="this.style.backgroundColor=\'#f6f8fa\';this.style.boxShadow=\'0 4px 8px rgba(0,0,0,0.1)\';"onmouseout="this.style.backgroundColor=\'#fff\';this.style.boxShadow=\'none\';">{render_project(repository, settings)}</td>'
+            f'<td class="project-cell">{render_project(repository, settings)}</td>'
             for repository in repositories[offset : offset + columns]
         ]
         cells.extend(
-            f'<td style="width:{width};"></td>'
+            f'<td class="project-cell"></td>'
             for _ in range(columns - len(cells))
         )
         rows.append(f"<tr>\n{''.join(cells)}\n</tr>")
-    return f'<table style="width:100%;border-collapse:separate;border-spacing:12px;">\n<tbody>\n{"".join(rows)}\n</tbody>\n</table>'
+    
+    html_out += f'<table class="projects-table">\n<tbody>\n{"".join(rows)}\n</tbody>\n</table>'
+    return html_out
 
 
 def update_readme(path: Path, generated_content: str) -> bool:

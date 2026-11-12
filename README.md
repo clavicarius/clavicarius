@@ -36,34 +36,58 @@ Neben den technischen Themen gilt mein Interesse vorallem der **Entwicklung von 
 ## 📂 Featured Projects
 
 <!-- PROJECTS:START -->
-<table style="width:100%;border-collapse:separate;border-spacing:12px;">
+<style>
+.projects-table { width:100%; border-collapse:separate; border-spacing:12px; }
+.project-cell { width:50%; padding:12px; border:1px solid #d0d7de; border-radius:6px; vertical-align:top; transition:all 0.3s ease; background-color:#fff; }
+.project-cell:hover { background-color:#f6f8fa; box-shadow:0 4px 8px rgba(0,0,0,0.1); }
+.project-content { display:flex; flex-direction:column; height:100%; }
+.project-content h3 { margin:0 0 8px 0; }
+.project-content p { margin:4px 0; }
+.project-image { margin:4px 0 8px 0; }
+.project-website { margin-top:auto; }
+.project-topics { font-size:0.9em; margin-top:8px; }
+.project-metadata { font-size:0.85em; color:#666; margin-top:8px; }
+</style>
+<table class="projects-table">
 <tbody>
 <tr>
-<td style="width:50%;padding:12px;vertical-align:top;border:1px solid #d0d7de;border-radius:6px;transition:all 0.3s ease;background-color:#fff;"onmouseover="this.style.backgroundColor='#f6f8fa';this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';"onmouseout="this.style.backgroundColor='#fff';this.style.boxShadow='none';"><h3><a href="https://github.com/clavicarius/keepical">keepical</a></h3>
-<p><a href="https://github.com/clavicarius/keepical"><img src="https://repository-images.githubusercontent.com/1372839093/c82cbd16-d4a7-414c-8aad-9645e9069af4" alt="Open Graph preview for keepical" loading="lazy"></a></p>
+<td class="project-cell"><div class="project-content">
+<h3><a href="https://github.com/clavicarius/keepical">keepical</a></h3>
+<div class="project-image"><a href="https://github.com/clavicarius/keepical"><img src="https://repository-images.githubusercontent.com/1372839093/c82cbd16-d4a7-414c-8aad-9645e9069af4" alt="Open Graph preview for keepical" loading="lazy"></a></div>
 <p>Keepical = keep + iCal. - a static, fully client-side web app for loss-minimizing editing of .ics files (iCalendar)</p>
-<p><a href="https://clavicarius.github.io/keepical/">Project website</a></p>
-<p style="font-size:0.9em;margin-top:8px;"><strong>Topics:</strong> ical · icalendar-events · client-side · no-server · no-server-required · calendar-app · calendar-editor · ics-editor</p>
-<p class="project-metadata" style="font-size:0.85em;color:#666;margin-top:8px;"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#3178c6" aria-hidden="true">●</span> TypeScript</span></p></td><td style="width:50%;padding:12px;vertical-align:top;border:1px solid #d0d7de;border-radius:6px;transition:all 0.3s ease;background-color:#fff;"onmouseover="this.style.backgroundColor='#f6f8fa';this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';"onmouseout="this.style.backgroundColor='#fff';this.style.boxShadow='none';"><h3><a href="https://github.com/clavicarius/TreeSync">TreeSync</a></h3>
-<p><a href="https://github.com/clavicarius/TreeSync"><img src="https://repository-images.githubusercontent.com/1267282362/abaac099-b4ac-4911-a7be-c79fa3761b6b" alt="Open Graph preview for TreeSync" loading="lazy"></a></p>
+<p class="project-website"><a href="https://clavicarius.github.io/keepical/">Project website</a></p>
+<p class="project-topics"><strong>Topics:</strong> ical · icalendar-events · client-side · no-server · no-server-required · calendar-app · calendar-editor · ics-editor</p>
+<p class="project-metadata"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#3178c6" aria-hidden="true">●</span> TypeScript</span></p>
+</div></td><td class="project-cell"><div class="project-content">
+<h3><a href="https://github.com/clavicarius/TreeSync">TreeSync</a></h3>
+<div class="project-image"><a href="https://github.com/clavicarius/TreeSync"><img src="https://repository-images.githubusercontent.com/1267282362/abaac099-b4ac-4911-a7be-c79fa3761b6b" alt="Open Graph preview for TreeSync" loading="lazy"></a></div>
 <p>CLI‑Tool zum Synchronisieren einer kompletten Verzeichnisstruktur. Dabei werden nur definierte Dateitypen synchronisiert.</p>
-<p class="project-metadata" style="font-size:0.85em;color:#666;margin-top:8px;"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#7355dd" aria-hidden="true">●</span> C#</span></p></td>
+<p class="project-metadata"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#7355dd" aria-hidden="true">●</span> C#</span></p>
+</div></td>
 </tr><tr>
-<td style="width:50%;padding:12px;vertical-align:top;border:1px solid #d0d7de;border-radius:6px;transition:all 0.3s ease;background-color:#fff;"onmouseover="this.style.backgroundColor='#f6f8fa';this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';"onmouseout="this.style.backgroundColor='#fff';this.style.boxShadow='none';"><h3><a href="https://github.com/clavicarius/ci-platform">ci-platform</a></h3>
-<p><a href="https://github.com/clavicarius/ci-platform"><img src="https://repository-images.githubusercontent.com/1292670299/17a6f522-563f-4a27-8bae-eb442270b023" alt="Open Graph preview for ci-platform" loading="lazy"></a></p>
+<td class="project-cell"><div class="project-content">
+<h3><a href="https://github.com/clavicarius/ci-platform">ci-platform</a></h3>
+<div class="project-image"><a href="https://github.com/clavicarius/ci-platform"><img src="https://repository-images.githubusercontent.com/1292670299/17a6f522-563f-4a27-8bae-eb442270b023" alt="Open Graph preview for ci-platform" loading="lazy"></a></div>
 <p>Zentral verwaltete wiederverwendbare GitHub Actions &amp; Workflows</p>
-<p class="project-metadata" style="font-size:0.85em;color:#666;margin-top:8px;"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#89e051" aria-hidden="true">●</span> Shell</span></p></td><td style="width:50%;padding:12px;vertical-align:top;border:1px solid #d0d7de;border-radius:6px;transition:all 0.3s ease;background-color:#fff;"onmouseover="this.style.backgroundColor='#f6f8fa';this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';"onmouseout="this.style.backgroundColor='#fff';this.style.boxShadow='none';"><h3><a href="https://github.com/clavicarius/HomeLab-compose">HomeLab-compose</a></h3>
-<p><a href="https://github.com/clavicarius/HomeLab-compose"><img src="https://repository-images.githubusercontent.com/876679915/5c99260e-9b50-429f-afc0-4a56317be053" alt="Open Graph preview for HomeLab-compose" loading="lazy"></a></p>
+<p class="project-metadata"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#89e051" aria-hidden="true">●</span> Shell</span></p>
+</div></td><td class="project-cell"><div class="project-content">
+<h3><a href="https://github.com/clavicarius/HomeLab-compose">HomeLab-compose</a></h3>
+<div class="project-image"><a href="https://github.com/clavicarius/HomeLab-compose"><img src="https://repository-images.githubusercontent.com/876679915/5c99260e-9b50-429f-afc0-4a56317be053" alt="Open Graph preview for HomeLab-compose" loading="lazy"></a></div>
 <p>Collection of (Docker) Compose configurations for self-hosted services and HomeLab environments</p>
-<p class="project-metadata" style="font-size:0.85em;color:#666;margin-top:8px;"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#3572A5" aria-hidden="true">●</span> Python</span></p></td>
+<p class="project-metadata"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#3572A5" aria-hidden="true">●</span> Python</span></p>
+</div></td>
 </tr><tr>
-<td style="width:50%;padding:12px;vertical-align:top;border:1px solid #d0d7de;border-radius:6px;transition:all 0.3s ease;background-color:#fff;"onmouseover="this.style.backgroundColor='#f6f8fa';this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';"onmouseout="this.style.backgroundColor='#fff';this.style.boxShadow='none';"><h3><a href="https://github.com/clavicarius/ct-pdf-split">ct-pdf-split</a></h3>
-<p><a href="https://github.com/clavicarius/ct-pdf-split"><img src="https://opengraph.githubassets.com/3ce5ef4a9ba5ff865cc0787d88789fdb31fbe89a43ade1be0514a540c1f3a853/clavicarius/ct-pdf-split" alt="Open Graph preview for ct-pdf-split" loading="lazy"></a></p>
+<td class="project-cell"><div class="project-content">
+<h3><a href="https://github.com/clavicarius/ct-pdf-split">ct-pdf-split</a></h3>
+<div class="project-image"><a href="https://github.com/clavicarius/ct-pdf-split"><img src="https://opengraph.githubassets.com/3ce5ef4a9ba5ff865cc0787d88789fdb31fbe89a43ade1be0514a540c1f3a853/clavicarius/ct-pdf-split" alt="Open Graph preview for ct-pdf-split" loading="lazy"></a></div>
 <p>Teilt digitale c’t-Heft-PDFs anhand des Inhaltsverzeichnisses in einzelne Artikel-PDFs </p>
-<p class="project-metadata" style="font-size:0.85em;color:#666;margin-top:8px;"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#3572A5" aria-hidden="true">●</span> Python</span></p></td><td style="width:50%;padding:12px;vertical-align:top;border:1px solid #d0d7de;border-radius:6px;transition:all 0.3s ease;background-color:#fff;"onmouseover="this.style.backgroundColor='#f6f8fa';this.style.boxShadow='0 4px 8px rgba(0,0,0,0.1)';"onmouseout="this.style.backgroundColor='#fff';this.style.boxShadow='none';"><h3><a href="https://github.com/clavicarius/mind-5">mind-5</a></h3>
-<p><a href="https://github.com/clavicarius/mind-5"><img src="https://repository-images.githubusercontent.com/1399734018/58e6ba77-cd16-4eac-803e-f4c27de1ee83" alt="Open Graph preview for mind-5" loading="lazy"></a></p>
+<p class="project-metadata"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#3572A5" aria-hidden="true">●</span> Python</span></p>
+</div></td><td class="project-cell"><div class="project-content">
+<h3><a href="https://github.com/clavicarius/mind-5">mind-5</a></h3>
+<div class="project-image"><a href="https://github.com/clavicarius/mind-5"><img src="https://repository-images.githubusercontent.com/1399734018/58e6ba77-cd16-4eac-803e-f4c27de1ee83" alt="Open Graph preview for mind-5" loading="lazy"></a></div>
 <p>5 Denkaufgaben - eine Runde täglich.</p>
-<p class="project-metadata" style="font-size:0.85em;color:#666;margin-top:8px;"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#f1e05a" aria-hidden="true">●</span> JavaScript</span></p></td>
+<p class="project-metadata"><span class="project-language"><strong>Language:</strong> <span class="project-language-indicator" style="color:#f1e05a" aria-hidden="true">●</span> JavaScript</span></p>
+</div></td>
 </tr>
 </tbody>
 </table>
