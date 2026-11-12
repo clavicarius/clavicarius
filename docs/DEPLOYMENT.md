@@ -87,22 +87,28 @@ Der Workflow:
 
 ## Setup und Authentifizierung
 
-### Anforderung: Fine-grained Personal Access Token
+### Anforderung: Personal Access Token (Classic)
 
-Der Generator benötigt einen GitHub Token mit Lesezugriff auf Repository-Metadaten.
+Der Generator benötigt einen GitHub Token **mit Lesezugriff auf öffentliche Repository-Metadaten**. Da der Generator nur **öffentliche Repositories liest** (keine Schreib-Zugriffe), ist ein minimales Token-Scope ausreichend.
 
 #### Token erstellen:
 
 1. **GitHub Einstellungen öffnen:**
    - [github.com/settings/tokens](https://github.com/settings/tokens)
 
-2. **Fine-grained Personal Access Token (Classic Token wird nicht empfohlen):**
+2. **Classic Personal Access Token erstellen:**
    - `Settings > Developer settings > Personal access tokens > Tokens (classic)`
    - Klick: "Generate new token (classic)"
 
-3. **Token-Berechtigungen:**
-   - ✅ `repo` (Vollzugriff auf Repositories)
-   - Oder minimal: `public_repo` (nur öffentliche Repositories)
+3. **Token-Berechtigungen (Scopes):**
+   
+   **Minimal erforderlich:**
+   - ✅ `public_repo` – Lesezugriff auf öffentliche Repositories (Scope ist ausreichend)
+   
+   **Alternative (mit mehr Rechten):**
+   - `repo` – Vollzugriff auf alle Repositories (auch privat)
+
+   ⚠️ **Hinweis:** Das `repo` Scope ist **nicht notwendig**, da nur öffentliche Repositories abgefragt werden. Nutze `public_repo` für bessere Sicherheit (Principle of Least Privilege).
 
 4. **Token kopieren und speichern** (wird nicht erneut angezeigt)
 
@@ -202,7 +208,7 @@ Der Workflow wird automatisch ausgelöst und die `README.md` aktualisiert.
 | Fehler | Ursache | Lösung |
 |--------|--------|--------|
 | `GITHUB_GRAPHQL_TOKEN is required` | Token nicht gesetzt | Token in Umgebungsvariable setzen oder Secret konfigurieren |
-| `Repository was not found or is inaccessible` | Token hat keine Berechtigung | Token mit `repo` oder `public_repo` Scope neu erstellen |
+| `Repository was not found or is inaccessible` | Token hat keine Berechtigung oder Repository ist privat | Token mit `public_repo` Scope neu erstellen |
 | `only PUBLIC repositories may be published` | Repository ist privat | Repository auf PUBLIC setzen oder aus `projects.yml` entfernen |
 | `expected exactly one ... MARKER` | README-Marker beschädigt | Marker `<!-- PROJECTS:START -->` und `<!-- PROJECTS:END -->` prüfen |
 
