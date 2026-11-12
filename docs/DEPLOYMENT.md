@@ -12,9 +12,9 @@ Die Aktualisierung erfolgt vollautomatisch über GitHub Actions und wird durch P
 
 ## Komponenten
 
-### 1. Konfiguration (`projects.yml`)
+### 1. Konfiguration (`.github/projects.yml`)
 
-Die zentralen Projekteinstellungen befinden sich in [projects.yml](../projects.yml):
+Die zentralen Projekteinstellungen befinden sich in [.github/projects.yml](../.github/projects.yml):
 
 ```yaml
 owner: clavicarius
@@ -36,10 +36,40 @@ settings:
 - Einen Eintrag unter `projects:` hinzufügen oder löschen
 - Der Workflow wird beim nächsten Push automatisch ausgelöst
 
+**Settings konfigurieren:**
+
+| Setting | Typ | Standard | Beschreibung |
+|---------|-----|----------|-------------|
+| `columns` | Integer | 2 | Anzahl der Spalten im Grid (1-4 empfohlen) |
+| `show_language` | Boolean | true | Primäre Programmiersprache mit Farbe anzeigen |
+| `show_topics` | Boolean | true | Repository Topics anzeigen |
+| `show_stars` | Boolean | false | Anzahl der Stars anzeigen |
+| `show_forks` | Boolean | false | Anzahl der Forks anzeigen |
+
+**Beispiel: Stars und Forks aktivieren:**
+```yaml
+settings:
+  columns: 2
+  show_language: true
+  show_topics: true
+  show_stars: true    # Einschalten
+  show_forks: true    # Einschalten
+```
+
+**Beispiel: Minimalistisch (nur Language):**
+```yaml
+settings:
+  columns: 3
+  show_language: true
+  show_topics: false
+  show_stars: false
+  show_forks: false
+```
+
 ### 2. Generator-Skript (`scripts/generate_readme.py`)
 
 Das Python-Skript:
-- Lädt die Konfiguration aus `projects.yml`
+- Lädt die Konfiguration aus `.github/projects.yml`
 - Ruft Repository-Metadaten über GraphQL ab
 - Validiert, dass alle Repositories öffentlich sind
 - Generiert HTML-Projektkarten mit Escaping gegen Injection
@@ -212,13 +242,13 @@ Tests prüfen:
 ## Wartung und Erweiterung
 
 ### Weitere Repositories hinzufügen:
-- `projects.yml` bearbeiten
+- `.github/projects.yml` bearbeiten
 - Eintrag hinzufügen
 - Push auf `main`
 - Workflow wird automatisch ausgelöst
 
 ### Layout ändern:
-- `projects.yml` → `settings.columns` anpassen
+- `.github/projects.yml` → `settings.columns` anpassen
 - Workflow wird automatisch neu ausgelöst
 
 ### Neue Metadaten anzeigen:
