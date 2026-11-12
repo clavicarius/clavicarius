@@ -231,14 +231,19 @@ def render_projects(
         return "<p>No projects configured.</p>"
 
     columns = settings["columns"]
-    cards = [render_project(repository, settings) for repository in repositories]
-    
-    html = '<link rel="stylesheet" href="assets/projects.css">\n'
-    html += f'<div class="projects-grid" style="--columns: {columns}">\n'
-    for card in cards:
-        html += f'<div class="project-card">\n{card}\n</div>\n'
-    html += '</div>'
-    return html
+    width = f"{100 / columns:g}%"
+    rows = []
+    for offset in range(0, len(repositories), columns):
+        cells = [
+            f'<td style="width:{width};padding:12px;vertical-align:top;border:1px solid #d0d7de;border-radius:6px;">{render_project(repository, settings)}</td>'
+            for repository in repositories[offset : offset + columns]
+        ]
+        cells.extend(
+            f'<td style="width:{width};"></td>'
+            for _ in range(columns - len(cells))
+        )
+        rows.append(f"<tr>\n{''.join(cells)}\n</tr>")
+    return f'<table style="width:100%;border-collapse:separate;border-spacing:12px;">\n<tbody>\n{"".join(rows)}\n</tbody>\n</table>'
 
 
 def update_readme(path: Path, generated_content: str) -> bool:
