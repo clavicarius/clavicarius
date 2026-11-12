@@ -31,6 +31,7 @@ settings:
 ```
 
 **Repositorys hinzufügen/entfernen:**
+
 - Einen Eintrag unter `projects:` hinzufügen oder löschen
 - Der Workflow wird beim nächsten Push automatisch ausgelöst
 
@@ -41,6 +42,7 @@ settings:
 | `show_language` | Boolean | true | Programmiersprache als Shields.io-Badge anzeigen |
 
 Die Markdown-Tabelle zeigt:
+
 - **Projekt**: Repository-Name (verlinkt zu GitHub)
 - **Description**: Volle Beschreibung des Repositories
 - **Language**: Programmiersprache als Shields.io-Badge
@@ -48,6 +50,7 @@ Die Markdown-Tabelle zeigt:
 ### 2. Generator-Skript (`scripts/generate_readme.py`)
 
 Das Python-Skript:
+
 - Lädt die Konfiguration aus `.github/projects.yml`
 - Ruft Repository-Metadaten über GraphQL ab (Name, Description, URL, primaryLanguage)
 - Validiert, dass alle Repositories öffentlich sind
@@ -59,6 +62,7 @@ Das Python-Skript:
 - Schreibt die `README.md` nur bei Änderungen
 
 **Generiertes Format:**
+
 ```markdown
 | Project | Description | Language |
 |---------|-------------|----------|
@@ -66,6 +70,7 @@ Das Python-Skript:
 ```
 
 **Lokale Ausführung:**
+
 ```bash
 # Token setzen
 set GITHUB_GRAPHQL_TOKEN=<dein-token>
@@ -77,6 +82,7 @@ python scripts/generate_readme.py
 ### 3. GitHub Actions Workflow (`.github/workflows/update-profile.yml`)
 
 Der Workflow:
+
 - Checked das Repository
 - Installiert Python und Abhängigkeiten
 - Führt den Generator aus
@@ -101,10 +107,10 @@ Der Generator benötigt einen GitHub Token **mit Lesezugriff auf öffentliche Re
    - Klick: "Generate new token (classic)"
 
 3. **Token-Berechtigungen (Scopes):**
-   
+
    **Minimal erforderlich:**
    - ✅ `public_repo` – Lesezugriff auf öffentliche Repositories (Scope ist ausreichend)
-   
+
    **Alternative (mit mehr Rechten):**
    - `repo` – Vollzugriff auf alle Repositories (auch privat)
 
@@ -112,7 +118,7 @@ Der Generator benötigt einen GitHub Token **mit Lesezugriff auf öffentliche Re
 
 4. **Token kopieren und speichern** (wird nicht erneut angezeigt)
 
-#### Secret im Repository konfigurieren:
+#### Secret im Repository konfigurieren
 
 1. **Im Profil-Repository:**
    - `Settings > Secrets and variables > Actions`
@@ -129,21 +135,25 @@ Der Workflow liest das Secret als `secrets.PROJECTS_TOKEN` und übergibt es an d
 
 ## Trigger und Auslösung
 
-### Automatische Trigger:
+### Automatische Trigger
 
 1. **Push auf `main` Branch**
+
    ```yaml
    on:
      push:
        branches:
          - main
    ```
+
    Der Workflow wird automatisch ausgelöst, wenn neue Commits auf `main` gepusht werden.
 
 2. **Manuelle Auslösung**
+
    ```yaml
    workflow_dispatch:
    ```
+
    Der Workflow kann manuell über die GitHub-UI ausgelöst werden:
    - Repository > Actions > "Update profile projects" > "Run workflow"
 
@@ -157,25 +167,29 @@ Der Workflow liest das Secret als `secrets.PROJECTS_TOKEN` und übergibt es an d
 
 ## Erste Schritte
 
-### 1. Repository lokal klonen:
+### 1. Repository lokal klonen
+
 ```bash
 git clone https://github.com/clavicarius/clavicarius.git
 cd clavicarius
 ```
 
-### 2. Python-Umgebung einrichten:
+### 2. Python-Umgebung einrichten
+
 ```bash
 python -m venv .venv
 .\.venv\Scripts\activate  # Windows
 source .venv/bin/activate  # macOS/Linux
 ```
 
-### 3. Abhängigkeiten installieren:
+### 3. Abhängigkeiten installieren
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. Token setzen und Generator testen:
+### 4. Token setzen und Generator testen
+
 ```bash
 set GITHUB_GRAPHQL_TOKEN=<dein-token>
 python scripts/generate_readme.py
@@ -184,6 +198,7 @@ python scripts/generate_readme.py
 ### 5. Repository Secret `PROJECTS_TOKEN` hinzufügen (siehe oben)
 
 ### 6. Push auf `main` oder manuelle Auslösung
+
 Der Workflow wird automatisch ausgelöst und die `README.md` aktualisiert.
 
 ---
@@ -191,6 +206,7 @@ Der Workflow wird automatisch ausgelöst und die `README.md` aktualisiert.
 ## Sicherheit
 
 ⚠️ **Wichtig:**
+
 - Private Repository-Metadaten dürfen **niemals** in die öffentliche `README.md` gelangen
 - Der Generator validiert, dass **nur PUBLIC repositories** veröffentlicht werden
 - Das Skript **bricht ab**, wenn ein Repository nicht öffentlich ist
@@ -212,7 +228,7 @@ Der Workflow wird automatisch ausgelöst und die `README.md` aktualisiert.
 | `only PUBLIC repositories may be published` | Repository ist privat | Repository auf PUBLIC setzen oder aus `projects.yml` entfernen |
 | `expected exactly one ... MARKER` | README-Marker beschädigt | Marker `<!-- PROJECTS:START -->` und `<!-- PROJECTS:END -->` prüfen |
 
-### Logs anschauen:
+### Logs anschauen
 
 1. GitHub Repository > **Actions**
 2. Letzten Workflow-Run anklicken
@@ -230,6 +246,7 @@ python -m unittest discover -s tests -v
 ```
 
 Tests prüfen:
+
 - HTML-Escaping gegen Injection
 - Marker-Handling
 - Spaltenlayout-Berechnung
@@ -239,7 +256,8 @@ Tests prüfen:
 
 ## Wartung und Erweiterung
 
-### Weitere Repositories hinzufügen:
+### Weitere Repositories hinzufügen
+
 - `.github/projects.yml` bearbeiten
 - Eintrag hinzufügen
 - Push auf `main`
@@ -250,9 +268,11 @@ Tests prüfen:
 ## Kontakt & Support
 
 Bei Fragen oder Problemen:
+
 - Workflow-Logs in GitHub Actions prüfen
 - Lokalen Generator-Run mit detaillierten Fehlern durchführen
 - `--help` Flag für Kommandozeilen-Optionen nutzen:
+
   ```bash
   python scripts/generate_readme.py --help
   ```
