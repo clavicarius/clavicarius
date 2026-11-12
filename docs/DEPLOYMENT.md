@@ -24,6 +24,7 @@ owner: clavicarius
 projects:
   - repo: repository-name-1
   - repo: repository-name-2
+    website: https://example.com
   # weitere Repositories...
 
 settings:
@@ -34,6 +35,7 @@ settings:
 
 - Einen Eintrag unter `projects:` hinzufügen oder löschen
 - Der Workflow wird beim nächsten Push automatisch ausgelöst
+- Optional `website:` setzen, um einen fehlenden oder abweichenden GitHub-Homepage-Link zu ergänzen bzw. zu überschreiben
 
 **Settings konfigurieren:**
 
@@ -44,7 +46,7 @@ settings:
 Die Markdown-Tabelle zeigt:
 
 - **Projekt**: Repository-Name (verlinkt zu GitHub)
-- **Description**: Volle Beschreibung des Repositories
+- **Description**: Volle Beschreibung des Repositories, optional mit Website-Link
 - **Language**: Programmiersprache als Shields.io-Badge
 
 ### 2. Generator-Skript (`scripts/generate_readme.py`)
@@ -52,11 +54,11 @@ Die Markdown-Tabelle zeigt:
 Das Python-Skript:
 
 - Lädt die Konfiguration aus `.github/projects.yml`
-- Ruft Repository-Metadaten über GraphQL ab (Name, Description, URL, primaryLanguage)
+- Ruft Repository-Metadaten über GraphQL ab (Name, Description, URL, homepageUrl, primaryLanguage)
 - Validiert, dass alle Repositories öffentlich sind
 - Generiert eine native **Markdown-Tabelle** mit 3 Spalten:
   - **Project**: Repository-Name (verlinkt)
-  - **Description**: Volle, unabgekürzte Beschreibung
+  - **Description**: Volle, unabgekürzte Beschreibung, optional mit Website-Link
   - **Language**: Programmiersprache als Shields.io-Badge
 - Aktualisiert ausschließlich den Bereich zwischen `<!-- PROJECTS:START -->` und `<!-- PROJECTS:END -->`
 - Schreibt die `README.md` nur bei Änderungen
@@ -66,7 +68,7 @@ Das Python-Skript:
 ```markdown
 | Project | Description | Language |
 |---------|-------------|----------|
-| [project-name](https://...) | Full description text | ![Python](https://img.shields.io/badge/-Python-333?style=flat) |
+| [project-name](https://...) | Full description text · [Website](<https://example.com>) | ![Python](https://img.shields.io/badge/-Python-333?style=flat) |
 ```
 
 **Lokale Ausführung:**

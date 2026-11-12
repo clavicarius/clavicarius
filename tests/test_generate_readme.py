@@ -5,6 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from generate_readme import (  # noqa: E402
+    load_config,
     render_projects,
     require_public_repository,
     update_readme,
@@ -84,6 +85,54 @@ class GenerateReadmeTests(unittest.TestCase):
         self.assertIn("%23", rendered)
         self.assertNotIn("-C#-", rendered)
         self.assertIn("-C%23-", rendered)
+
+    def test_render_projects_includes_valid_homepage_link_in_description(self):
+        repository = {
+            "name": "mind-5",
+            "url": "https://github.com/example/mind-5",
+            "homepageUrl": "https://example.com/app?mode=daily&view=(today)",
+            "description": "Daily puzzles",
+        }
+
+        rendered = render_projects([repository], {"show_language": False})
+
+        self.assertIn(
+            "[Website](<https://example.com/app?mode=daily&view=%28today%29>)",
+            rendered,
+        )
+
+    def test_load_config_accepts_optional_website_url(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "projects.yml"
+            path.write_text(
+                "owner: example\n"
+                "projects:\n"
+                "  - repo: mind-5\n"
+                "    website: https://example.com/app\n",
+                encoding="utf-8",
+            )
+
+            owner, projects, _ = load_config(path)
+
+        self.assertEqual(owner, "example")
+        self.assertEqual(
+            projects,
+            [{"repo": "mind-5", "website": "https://example.com/app"}],
+        )
+
+    def test_load_config_rejects_unsafe_website_url(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "projects.yml"
+            path.write_text(
+                "owner: example\n"
+                "projects:\n"
+                "  - repo: mind-5\n"
+                "    website: javascript:alert(1)\n",
+                encoding="utf-8",
+            )
+
+            with self.assertRaisesRegex(ValueError, "valid HTTP\\(S\\) URL"):
+                load_config(path)
 
     def test_non_public_repository_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "only PUBLIC repositories"):

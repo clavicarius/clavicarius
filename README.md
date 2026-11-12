@@ -14,12 +14,12 @@ Neben den technischen Themen gilt mein Interesse vorallem der **Entwicklung von 
 
 | Project | Description | Language |
 |---------|-------------|----------|
-| [keepical](https://github.com/clavicarius/keepical) | Keepical = keep + iCal. - a static, fully client-side web app for loss-minimizing editing of .ics files (iCalendar) | ![TypeScript](https://img.shields.io/badge/-TypeScript-333?style=flat) |
+| [keepical](https://github.com/clavicarius/keepical) | Keepical = keep + iCal. - a static, fully client-side web app for loss-minimizing editing of .ics files (iCalendar) · [Website](<https://clavicarius.github.io/keepical/>) | ![TypeScript](https://img.shields.io/badge/-TypeScript-333?style=flat) |
 | [TreeSync](https://github.com/clavicarius/TreeSync) | CLI‑Tool zum Synchronisieren einer kompletten Verzeichnisstruktur. Dabei werden nur definierte Dateitypen synchronisiert. | ![C#](https://img.shields.io/badge/-C%23-333?style=flat) |
 | [ci-platform](https://github.com/clavicarius/ci-platform) | Zentral verwaltete wiederverwendbare GitHub Actions &amp; Workflows | ![Shell](https://img.shields.io/badge/-Shell-333?style=flat) |
 | [HomeLab-compose](https://github.com/clavicarius/HomeLab-compose) | Collection of (Docker) Compose configurations for self-hosted services and HomeLab environments | ![Python](https://img.shields.io/badge/-Python-333?style=flat) |
 | [ct-pdf-split](https://github.com/clavicarius/ct-pdf-split) | Teilt digitale c’t-Heft-PDFs anhand des Inhaltsverzeichnisses in einzelne Artikel-PDFs  | ![Python](https://img.shields.io/badge/-Python-333?style=flat) |
-| [mind-5](https://github.com/clavicarius/mind-5) | 5 Denkaufgaben - eine Runde täglich. | ![JavaScript](https://img.shields.io/badge/-JavaScript-333?style=flat) |
+| [mind-5](https://github.com/clavicarius/mind-5) | 5 Denkaufgaben - eine Runde täglich. · [Website](<https://clavicarius.github.io/mind-5/>) | ![JavaScript](https://img.shields.io/badge/-JavaScript-333?style=flat) |
 
 <!-- PROJECTS:END -->
 

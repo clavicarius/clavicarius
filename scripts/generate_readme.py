@@ -10,7 +10,7 @@ import re
 import sys
 from pathlib import Path
 from typing import Any
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlsplit
 
 import requests
 import yaml
@@ -58,7 +58,7 @@ DEFAULT_SETTINGS = {
 LANGUAGE_COLOR_RE = re.compile(r"#[0-9a-fA-F]{6}\Z")
 
 
-def load_config(path: Path) -> tuple[str, list[str], dict[str, Any]]:
+def load_config(path: Path) -> tuple[str, list[dict[str, str]], dict[str, Any]]:
     with path.open(encoding="utf-8") as config_file:
         config = yaml.safe_load(config_file)
 
@@ -73,16 +73,26 @@ def load_config(path: Path) -> tuple[str, list[str], dict[str, Any]]:
     if not isinstance(entries, list):
         raise ValueError(f"{path}: 'projects' must be a list")
 
-    repositories: list[str] = []
+    repositories: list[dict[str, str]] = []
+    repository_names: list[str] = []
     for index, entry in enumerate(entries):
         if not isinstance(entry, dict):
             raise ValueError(f"{path}: projects[{index}] must be a mapping")
         name = entry.get("repo")
         if not isinstance(name, str) or not name.strip():
             raise ValueError(f"{path}: projects[{index}].repo must be a non-empty string")
-        if name in repositories:
+        if name in repository_names:
             raise ValueError(f"{path}: duplicate repository {name!r}")
-        repositories.append(name)
+        repository_names.append(name)
+        project = {"repo": name}
+        website = entry.get("website")
+        if website is not None:
+            if not isinstance(website, str) or safe_http_url(website) is None:
+                raise ValueError(
+                    f"{path}: projects[{index}].website must be a valid HTTP(S) URL"
+                )
+            project["website"] = website
+        repositories.append(project)
 
     settings = dict(DEFAULT_SETTINGS)
     configured_settings = config.get("settings", {})
@@ -173,6 +183,10 @@ def render_projects(repositories: list[dict[str, Any]], settings: dict[str, Any]
         name = escape(repo.get("name", "—"))
         url = repo.get("url", "#")
         desc = escape(repo.get("description", "—"))
+        homepage_url = safe_http_url(repo.get("homepageUrl"))
+        if homepage_url:
+            homepage_url = quote(homepage_url, safe=":/?#[]@!$&'*+,;=%")
+            desc += f" · [Website](<{homepage_url}>)"
         
         language_badge = "—"
         if settings["show_language"]:
@@ -224,8 +238,13 @@ def main() -> int:
     if not token:
         parser.error("GITHUB_GRAPHQL_TOKEN is required")
 
-    owner, names, settings = load_config(args.config)
-    repositories = [fetch_repository(owner, name, token) for name in names]
+    owner, projects, settings = load_config(args.config)
+    repositories = []
+    for project in projects:
+        repository = fetch_repository(owner, project["repo"], token)
+        if "website" in project:
+            repository["homepageUrl"] = project["website"]
+        repositories.append(repository)
     changed = update_readme(args.readme, render_projects(repositories, settings))
     print("README updated." if changed else "README is already up to date.")
     return 0
