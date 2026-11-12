@@ -7,6 +7,7 @@ projects:
   - repo: HomeLab-compose
   - repo: ct-pdf-split
   - repo: mind-5
+    website: https://clavicarius.github.io/mind-5/
 
 settings:
   columns: 2
