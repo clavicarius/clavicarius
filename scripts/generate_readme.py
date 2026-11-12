@@ -205,6 +205,16 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
         if topics:
             metadata.append(f"<strong>Topics:</strong> {' · '.join(topics)}")
 
+    if settings["show_stars"] and isinstance(repository.get("stargazers"), dict):
+        count = repository["stargazers"].get("totalCount")
+        if isinstance(count, int) and not isinstance(count, bool):
+            metadata.append(f"<strong>Stars:</strong> {count}")
+
+    if settings["show_forks"] and isinstance(repository.get("forks"), dict):
+        count = repository["forks"].get("totalCount")
+        if isinstance(count, int) and not isinstance(count, bool):
+            metadata.append(f"<strong>Forks:</strong> {count}")
+
     if metadata:
         content.append(f'<p class="project-metadata">{" &nbsp;·&nbsp; ".join(metadata)}</p>')
 
@@ -263,7 +273,7 @@ def update_readme(path: Path, generated_content: str) -> bool:
 def main() -> int:
     root = Path(__file__).resolve().parent.parent
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--config", type=Path, default=root / "projects.yml")
+    parser.add_argument("--config", type=Path, default=root / ".github" / "projects.yml")
     parser.add_argument("--readme", type=Path, default=root / "README.md")
     args = parser.parse_args()
 
