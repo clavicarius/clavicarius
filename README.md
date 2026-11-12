@@ -12,41 +12,33 @@ Neben den technischen Themen gilt mein Interesse vorallem der **Entwicklung von 
 ## 📂 Featured Projects
 
 <!-- PROJECTS:START -->
-<table>
+<table cellpadding="0" cellspacing="8" width="100%">
 <tbody>
 <tr>
-<td width="50%" valign="top"><p><a href="https://github.com/clavicarius/HomeLab-compose"><img src="https://repository-images.githubusercontent.com/876679915/5c99260e-9b50-429f-afc0-4a56317be053" width="100%" alt="Open Graph preview for HomeLab-compose" loading="lazy"></a></p>
-<h3><a href="https://github.com/clavicarius/HomeLab-compose">HomeLab-compose</a></h3>
-<p>Ccollection of (Docker) Compose configurations for self-hosted services and HomeLab environments</p>
-<p><strong>Language:</strong> <span style="color:#3572A5" aria-hidden="true">●</span> Python &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0 &nbsp;·&nbsp; <strong>Custom social preview</strong></p></td><td width="50%" valign="top"><p><a href="https://github.com/clavicarius/ci-platform"><img src="https://repository-images.githubusercontent.com/1292670299/17a6f522-563f-4a27-8bae-eb442270b023" width="100%" alt="Open Graph preview for ci-platform" loading="lazy"></a></p>
-<h3><a href="https://github.com/clavicarius/ci-platform">ci-platform</a></h3>
-<p>Zentral verwaltete wiederverwendbare GitHub Actions &amp; Workflows</p>
-<p><strong>Language:</strong> <span style="color:#89e051" aria-hidden="true">●</span> Shell &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0 &nbsp;·&nbsp; <strong>Custom social preview</strong></p></td>
-</tr><tr>
-<td width="50%" valign="top"><p><a href="https://github.com/clavicarius/mind-5"><img src="https://repository-images.githubusercontent.com/1399734018/58e6ba77-cd16-4eac-803e-f4c27de1ee83" width="100%" alt="Open Graph preview for mind-5" loading="lazy"></a></p>
-<h3><a href="https://github.com/clavicarius/mind-5">mind-5</a></h3>
-<p>5 Denkaufgaben - eine Runde täglich.</p>
-<p><strong>Language:</strong> <span style="color:#f1e05a" aria-hidden="true">●</span> JavaScript &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0 &nbsp;·&nbsp; <strong>Custom social preview</strong></p></td><td width="50%" valign="top"><p><a href="https://github.com/clavicarius/ct-pdf-split"><img src="https://opengraph.githubassets.com/3ce5ef4a9ba5ff865cc0787d88789fdb31fbe89a43ade1be0514a540c1f3a853/clavicarius/ct-pdf-split" width="100%" alt="Open Graph preview for ct-pdf-split" loading="lazy"></a></p>
-<h3><a href="https://github.com/clavicarius/ct-pdf-split">ct-pdf-split</a></h3>
-<p>Teilt digitale c’t-Heft-PDFs anhand des Inhaltsverzeichnisses in einzelne Artikel-PDFs </p>
-<p><strong>Language:</strong> <span style="color:#3572A5" aria-hidden="true">●</span> Python &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0</p></td>
-</tr><tr>
-<td width="50%" valign="top"><p><a href="https://github.com/clavicarius/keepical"><img src="https://repository-images.githubusercontent.com/1372839093/c82cbd16-d4a7-414c-8aad-9645e9069af4" width="100%" alt="Open Graph preview for keepical" loading="lazy"></a></p>
+<td width="50%" valign="top" style="padding:12px;border:1px solid #d0d7de;border-radius:6px;"><p><a href="https://github.com/clavicarius/keepical"><img src="https://repository-images.githubusercontent.com/1372839093/c82cbd16-d4a7-414c-8aad-9645e9069af4" width="100%" alt="Open Graph preview for keepical" loading="lazy"></a></p>
 <h3><a href="https://github.com/clavicarius/keepical">keepical</a></h3>
 <p>Keepical = keep + iCal. - a static, fully client-side web app for loss-minimizing editing of .ics files (iCalendar)</p>
 <p><strong>Language:</strong> <span style="color:#3178c6" aria-hidden="true">●</span> TypeScript &nbsp;·&nbsp; <strong>Topics:</strong> ical · icalendar-events · client-side · no-server · no-server-required · calendar-app · calendar-editor · ics-editor &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0 &nbsp;·&nbsp; <strong>Custom social preview</strong></p>
-<p><a href="https://clavicarius.github.io/keepical/">Project website</a></p></td><td width="50%" valign="top"><p><a href="https://github.com/clavicarius/TreeSync"><img src="https://repository-images.githubusercontent.com/1267282362/abaac099-b4ac-4911-a7be-c79fa3761b6b" width="100%" alt="Open Graph preview for TreeSync" loading="lazy"></a></p>
+<p><a href="https://clavicarius.github.io/keepical/">Project website</a></p></td><td width="50%" valign="top" style="padding:12px;border:1px solid #d0d7de;border-radius:6px;"><p><a href="https://github.com/clavicarius/TreeSync"><img src="https://repository-images.githubusercontent.com/1267282362/abaac099-b4ac-4911-a7be-c79fa3761b6b" width="100%" alt="Open Graph preview for TreeSync" loading="lazy"></a></p>
 <h3><a href="https://github.com/clavicarius/TreeSync">TreeSync</a></h3>
 <p>CLI‑Tool zum Synchronisieren einer kompletten Verzeichnisstruktur. Dabei werden nur definierte Dateitypen synchronisiert.</p>
 <p><strong>Language:</strong> <span style="color:#7355dd" aria-hidden="true">●</span> C# &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0 &nbsp;·&nbsp; <strong>Custom social preview</strong></p></td>
 </tr><tr>
-<td width="50%" valign="top"><p><a href="https://github.com/clavicarius/small-webapps"><img src="https://repository-images.githubusercontent.com/1265875440/feef5f7b-d268-423f-9193-75767e69f7ed" width="100%" alt="Open Graph preview for small-webapps" loading="lazy"></a></p>
-<h3><a href="https://github.com/clavicarius/small-webapps">small-webapps</a></h3>
-<p>Sammlung kleiner Webanwendungen und Hilfsprogramme für die interne Verwendung.</p>
-<p><strong>Language:</strong> <span style="color:#3178c6" aria-hidden="true">●</span> TypeScript &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 1 &nbsp;·&nbsp; <strong>Custom social preview</strong></p></td><td width="50%" valign="top"><p><a href="https://github.com/clavicarius/peaceful-8"><img src="https://opengraph.githubassets.com/39f821fb936394e313574a397729249ef223c38cfbccd3048a696d91a533ddb4/clavicarius/peaceful-8" width="100%" alt="Open Graph preview for peaceful-8" loading="lazy"></a></p>
-<h3><a href="https://github.com/clavicarius/peaceful-8">peaceful-8</a></h3>
-<p>Balance is Victory</p>
-<p><strong>Language:</strong> <span style="color:#3178c6" aria-hidden="true">●</span> TypeScript &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0</p></td>
+<td width="50%" valign="top" style="padding:12px;border:1px solid #d0d7de;border-radius:6px;"><p><a href="https://github.com/clavicarius/ci-platform"><img src="https://repository-images.githubusercontent.com/1292670299/17a6f522-563f-4a27-8bae-eb442270b023" width="100%" alt="Open Graph preview for ci-platform" loading="lazy"></a></p>
+<h3><a href="https://github.com/clavicarius/ci-platform">ci-platform</a></h3>
+<p>Zentral verwaltete wiederverwendbare GitHub Actions &amp; Workflows</p>
+<p><strong>Language:</strong> <span style="color:#89e051" aria-hidden="true">●</span> Shell &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0 &nbsp;·&nbsp; <strong>Custom social preview</strong></p></td><td width="50%" valign="top" style="padding:12px;border:1px solid #d0d7de;border-radius:6px;"><p><a href="https://github.com/clavicarius/HomeLab-compose"><img src="https://repository-images.githubusercontent.com/876679915/5c99260e-9b50-429f-afc0-4a56317be053" width="100%" alt="Open Graph preview for HomeLab-compose" loading="lazy"></a></p>
+<h3><a href="https://github.com/clavicarius/HomeLab-compose">HomeLab-compose</a></h3>
+<p>Ccollection of (Docker) Compose configurations for self-hosted services and HomeLab environments</p>
+<p><strong>Language:</strong> <span style="color:#3572A5" aria-hidden="true">●</span> Python &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0 &nbsp;·&nbsp; <strong>Custom social preview</strong></p></td>
+</tr><tr>
+<td width="50%" valign="top" style="padding:12px;border:1px solid #d0d7de;border-radius:6px;"><p><a href="https://github.com/clavicarius/ct-pdf-split"><img src="https://opengraph.githubassets.com/3ce5ef4a9ba5ff865cc0787d88789fdb31fbe89a43ade1be0514a540c1f3a853/clavicarius/ct-pdf-split" width="100%" alt="Open Graph preview for ct-pdf-split" loading="lazy"></a></p>
+<h3><a href="https://github.com/clavicarius/ct-pdf-split">ct-pdf-split</a></h3>
+<p>Teilt digitale c’t-Heft-PDFs anhand des Inhaltsverzeichnisses in einzelne Artikel-PDFs </p>
+<p><strong>Language:</strong> <span style="color:#3572A5" aria-hidden="true">●</span> Python &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0</p></td><td width="50%" valign="top" style="padding:12px;border:1px solid #d0d7de;border-radius:6px;"><p><a href="https://github.com/clavicarius/mind-5"><img src="https://repository-images.githubusercontent.com/1399734018/58e6ba77-cd16-4eac-803e-f4c27de1ee83" width="100%" alt="Open Graph preview for mind-5" loading="lazy"></a></p>
+<h3><a href="https://github.com/clavicarius/mind-5">mind-5</a></h3>
+<p>5 Denkaufgaben - eine Runde täglich.</p>
+<p><strong>Language:</strong> <span style="color:#f1e05a" aria-hidden="true">●</span> JavaScript &nbsp;·&nbsp; <strong>Stars:</strong> 1 &nbsp;·&nbsp; <strong>Forks:</strong> 0 &nbsp;·&nbsp; <strong>Custom social preview</strong></p></td>
 </tr>
 </tbody>
 </table>
