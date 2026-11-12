@@ -171,7 +171,7 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
         content.insert(
             0,
             f'<p><a href="{escape(repo_url)}">'
-            f'<img src="{escape(image_url)}" width="100%" '
+            f'<img src="{escape(image_url)}" '
             f'alt="Open Graph preview for {name}" loading="lazy"></a></p>',
         )
 
@@ -187,7 +187,7 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
             color = language.get("color")
             if isinstance(color, str) and LANGUAGE_COLOR_RE.fullmatch(color):
                 label = (
-                    f'<span style="color:{escape(color)}" aria-hidden="true">●</span> '
+                    f'<span class="project-language-indicator" style="color:{escape(color)}" aria-hidden="true">●</span> '
                     f"{label}"
                 )
             metadata.append(f"<strong>Language:</strong> {label}")
@@ -219,7 +219,7 @@ def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
         metadata.append("<strong>Custom social preview</strong>")
 
     if metadata:
-        content.append(f"<p>{' &nbsp;·&nbsp; '.join(metadata)}</p>")
+        content.append(f'<p class="project-metadata">{" &nbsp;·&nbsp; ".join(metadata)}</p>')
 
     homepage = safe_http_url(repository.get("homepageUrl"))
     if homepage:
@@ -238,15 +238,15 @@ def render_projects(
     rows = []
     for offset in range(0, len(repositories), columns):
         cells = [
-            f'<td width="{width}" valign="top" style="padding:12px;border:1px solid #d0d7de;border-radius:6px;">{render_project(repository, settings)}</td>'
+            f'<td width="{width}" class="project-card">{render_project(repository, settings)}</td>'
             for repository in repositories[offset : offset + columns]
         ]
         cells.extend(
-            f'<td width="{width}" valign="top"></td>'
+            f'<td width="{width}"></td>'
             for _ in range(columns - len(cells))
         )
         rows.append(f"<tr>\n{''.join(cells)}\n</tr>")
-    return f"<table cellpadding=\"0\" cellspacing=\"8\" width=\"100%\">\n<tbody>\n{''.join(rows)}\n</tbody>\n</table>"
+    return f'<link rel="stylesheet" href="assets/projects.css">\n<table class="projects-grid">\n<tbody>\n{"".join(rows)}\n</tbody>\n</table>'
 
 
 def update_readme(path: Path, generated_content: str) -> bool:
