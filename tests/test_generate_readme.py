@@ -61,14 +61,15 @@ class GenerateReadmeTests(unittest.TestCase):
             },
         )
 
-        self.assertIn('<td width="25%"', rendered)
+        self.assertIn('class="projects-grid"', rendered)
+        self.assertIn('class="project-card"', rendered)
         self.assertIn("&lt;script&gt;", rendered)
         self.assertIn("&lt;img src=x onerror=alert(1)&gt;", rendered)
         self.assertIn("safe&amp;sound", rendered)
         self.assertNotIn("javascript:", rendered)
         self.assertIn("<strong>Stars:</strong>", rendered)
         self.assertIn("<strong>Forks:</strong>", rendered)
-        self.assertEqual(rendered.count("<td "), 4)
+        self.assertIn("--columns: 4", rendered)
 
     def test_non_public_repository_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "only PUBLIC repositories"):
