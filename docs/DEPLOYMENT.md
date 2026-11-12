@@ -4,9 +4,11 @@ Dieses Dokument beschreibt, wie der automatisierte Profile-README-Generator eing
 
 ## Übersicht
 
-Der Generator ruft Metadaten ausgewählter öffentlicher GitHub-Repositories über die GitHub GraphQL API ab und generiert automatisch moderne Projektkarten in der `README.md` des Profil-Repositories.
+Der Generator ruft Metadaten ausgewählter öffentlicher GitHub-Repositories über die GitHub GraphQL API ab und generiert automatisch eine **native Markdown-Tabelle** mit Projektinformationen in der `README.md` des Profil-Repositories.
 
 Die Aktualisierung erfolgt vollautomatisch über GitHub Actions und wird durch Push-Events oder manuelle Auslösung getriggert.
+
+**Format:** Einfache Markdown-Tabelle mit Shields.io-Badges für Programmiersprachen. 100% GitHub-kompatibel.
 
 ---
 
@@ -40,41 +42,46 @@ settings:
 
 | Setting | Typ | Standard | Beschreibung |
 |---------|-----|----------|-------------|
-| `columns` | Integer | 2 | Anzahl der Spalten im Grid (1-4 empfohlen) |
-| `show_language` | Boolean | true | Primäre Programmiersprache mit Farbe anzeigen |
-| `show_topics` | Boolean | true | Repository Topics anzeigen |
-| `show_stars` | Boolean | false | Anzahl der Stars anzeigen |
-| `show_forks` | Boolean | false | Anzahl der Forks anzeigen |
+| `columns` | Integer | 2 | *(Veraltet - wird für Markdown nicht verwendet)* |
+| `show_language` | Boolean | true | Programmiersprache als Shields.io-Badge anzeigen |
+| `show_topics` | Boolean | true | *(Veraltet - wird in Markdown nicht angezeigt)* |
+| `show_stars` | Boolean | false | *(Veraltet - wird in Markdown nicht angezeigt)* |
+| `show_forks` | Boolean | false | *(Veraltet - wird in Markdown nicht angezeigt)* |
 
-**Beispiel: Stars und Forks aktivieren:**
+**Hinweis:** In der Markdown-Tabellen-Variante wird nur die `show_language` Einstellung verwendet. Die Tabelle zeigt:
+- **Projekt**: Repository-Name (verlinkt zu GitHub)
+- **Description**: Volle Beschreibung des Repositories (nicht abgeschnitten)
+- **Language**: Programmiersprache als Shields.io-Badge
+
+**Beispiel Konfiguration:**
 ```yaml
 settings:
-  columns: 2
-  show_language: true
-  show_topics: true
-  show_stars: true    # Einschalten
-  show_forks: true    # Einschalten
-```
-
-**Beispiel: Minimalistisch (nur Language):**
-```yaml
-settings:
-  columns: 3
-  show_language: true
-  show_topics: false
-  show_stars: false
-  show_forks: false
+  columns: 2              # Wird ignoriert
+  show_language: true     # Badge anzeigen
+  show_topics: false      # Nicht angezeigt
+  show_stars: false       # Nicht angezeigt
+  show_forks: false       # Nicht angezeigt
 ```
 
 ### 2. Generator-Skript (`scripts/generate_readme.py`)
 
 Das Python-Skript:
 - Lädt die Konfiguration aus `.github/projects.yml`
-- Ruft Repository-Metadaten über GraphQL ab
+- Ruft Repository-Metadaten über GraphQL ab (Name, Description, URL, primaryLanguage)
 - Validiert, dass alle Repositories öffentlich sind
-- Generiert HTML-Projektkarten mit Escaping gegen Injection
+- Generiert eine native **Markdown-Tabelle** mit 3 Spalten:
+  - **Project**: Repository-Name (verlinkt)
+  - **Description**: Volle, unabgekürzte Beschreibung
+  - **Language**: Programmiersprache als Shields.io-Badge
 - Aktualisiert ausschließlich den Bereich zwischen `<!-- PROJECTS:START -->` und `<!-- PROJECTS:END -->`
 - Schreibt die `README.md` nur bei Änderungen
+
+**Generiertes Format:**
+```markdown
+| Project | Description | Language |
+|---------|-------------|----------|
+| [project-name](https://...) | Full description text | ![Python](https://img.shields.io/badge/-Python-333?style=flat) |
+```
 
 **Lokale Ausführung:**
 ```bash
@@ -200,6 +207,9 @@ Der Workflow wird automatisch ausgelöst und die `README.md` aktualisiert.
 - Der Generator validiert, dass **nur PUBLIC repositories** veröffentlicht werden
 - Das Skript **bricht ab**, wenn ein Repository nicht öffentlich ist
 - Token-Wert wird **niemals** geloggt oder in Artefakten gespeichert
+- HTML-Escaping schützt gegen XSS-Injection in Description-Texten
+
+**Markdown-Tabelle:** Native GitHub-Rendering ohne Custom HTML/CSS, daher maximal sicher.
 
 ---
 

@@ -159,94 +159,34 @@ def safe_http_url(value: Any) -> str | None:
     return value
 
 
-def render_project(repository: dict[str, Any], settings: dict[str, Any]) -> str:
-    name = escape(repository["name"])
-    repo_url = safe_http_url(repository.get("url"))
-    if repo_url is None:
-        raise ValueError(f"Repository {repository['name']!r} has an invalid URL")
-
-    content = []
-
-    content.append(f'<h3><a href="{escape(repo_url)}">{name}</a></h3>')
-
-    image_url = safe_http_url(repository.get("openGraphImageUrl"))
-    if image_url:
-        content.append(
-            f'<p><a href="{escape(repo_url)}">'
-            f'<img src="{escape(image_url)}" '
-            f'alt="Open Graph preview for {name}" loading="lazy" style="width:100%;border-radius:6px;"></a></p>',
-        )
-
-    description = repository.get("description")
-    if description:
-        content.append(f"<p>{escape(description)}</p>")
-
-    homepage = safe_http_url(repository.get("homepageUrl"))
-    if homepage:
-        content.append(f'<p><a href="{escape(homepage)}">Project website</a></p>')
-
-    if settings["show_topics"]:
-        topic_data = repository.get("repositoryTopics")
-        nodes = topic_data.get("nodes", []) if isinstance(topic_data, dict) else []
-        topics = [
-            escape(node["topic"]["name"])
-            for node in nodes
-            if isinstance(node, dict)
-            and isinstance(node.get("topic"), dict)
-            and node["topic"].get("name")
-        ]
-        if topics:
-            content.append(f'<p style="font-size:0.9em;color:#666;margin-top:8px;"><strong>Topics:</strong> {" · ".join(topics)}</p>')
-
-    metadata: list[str] = []
-    if settings["show_language"]:
-        language = repository.get("primaryLanguage")
-        if isinstance(language, dict) and language.get("name"):
-            label = escape(language["name"])
-            color = language.get("color")
-            if isinstance(color, str) and LANGUAGE_COLOR_RE.fullmatch(color):
-                label = (
-                    f'<span style="color:{escape(color)}" aria-hidden="true">●</span> '
-                    f"{label}"
-                )
-            metadata.append(f'<strong>Language:</strong> {label}')
-
-    if settings["show_forks"] and isinstance(repository.get("forks"), dict):
-        count = repository["forks"].get("totalCount")
-        if isinstance(count, int) and not isinstance(count, bool):
-            metadata.append(f"<strong>Forks:</strong> {count}")
-
-    if settings["show_stars"] and isinstance(repository.get("stargazers"), dict):
-        count = repository["stargazers"].get("totalCount")
-        if isinstance(count, int) and not isinstance(count, bool):
-            metadata.append(f"<strong>Stars:</strong> {count}")
-
-    if metadata:
-        content.append(f'<p style="font-size:0.85em;color:#666;margin-top:8px;">{" · ".join(metadata)}</p>')
-
-    return "\n".join(content)
-
-
-def render_projects(
-    repositories: list[dict[str, Any]], settings: dict[str, Any]
-) -> str:
+def render_projects(repositories: list[dict[str, Any]], settings: dict[str, Any]) -> str:
     if not repositories:
         return "<p>No projects configured.</p>"
 
-    columns = settings["columns"]
-    width = f"{100 / columns:g}%"
-    rows = []
-    for offset in range(0, len(repositories), columns):
-        cells = [
-            f'<td style="width:{width};padding:12px;border:1px solid #d0d7de;border-radius:6px;vertical-align:top;">{render_project(repository, settings)}</td>'
-            for repository in repositories[offset : offset + columns]
-        ]
-        cells.extend(
-            f'<td style="width:{width};"></td>'
-            for _ in range(columns - len(cells))
-        )
-        rows.append(f"<tr>\n{''.join(cells)}\n</tr>")
-    return f'<table style="width:100%;border-collapse:separate;border-spacing:12px;">\n<tbody>\n{"".join(rows)}\n</tbody>\n</table>'
+    lines = [
+        "",
+        "| Project | Description | Language |",
+        "|---------|-------------|----------|",
+    ]
+    
+    for repo in repositories:
+        name = escape(repo.get("name", "—"))
+        url = repo.get("url", "#")
+        desc = escape(repo.get("description", "—"))
+        
+        language_badge = "—"
+        if settings["show_language"]:
+            language = repo.get("primaryLanguage", {})
+            if language and isinstance(language, dict):
+                lang_name = language.get("name")
+                if lang_name:
+                    lang_name_escaped = lang_name.replace(" ", "%20")
+                    language_badge = f'![{lang_name}](https://img.shields.io/badge/-{lang_name_escaped}-333?style=flat)'
+        
+        lines.append(f"| [{name}]({url}) | {desc} | {language_badge} |")
+    
+    lines.append("")
+    return "\n".join(lines)
 
 
 def update_readme(path: Path, generated_content: str) -> bool:

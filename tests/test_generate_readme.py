@@ -61,14 +61,12 @@ class GenerateReadmeTests(unittest.TestCase):
             },
         )
 
-        self.assertIn('style="width:100%', rendered)
-        self.assertIn('width:25%', rendered)
-        self.assertIn("&lt;script&gt;", rendered)
+        self.assertIn("| Project | Description | Language |", rendered)
         self.assertIn("&lt;img src=x onerror=alert(1)&gt;", rendered)
-        self.assertIn("safe&amp;sound", rendered)
+        self.assertIn("img.shields.io", rendered)
+        self.assertIn("Python", rendered)
         self.assertNotIn("javascript:", rendered)
-        self.assertIn("<strong>Stars:</strong>", rendered)
-        self.assertIn("<strong>Forks:</strong>", rendered)
+        self.assertNotIn("Topics:", rendered)
 
     def test_non_public_repository_is_rejected(self):
         with self.assertRaisesRegex(ValueError, "only PUBLIC repositories"):
