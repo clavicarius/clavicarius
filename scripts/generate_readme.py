@@ -238,7 +238,7 @@ def render_projects(
     rows = []
     for offset in range(0, len(repositories), columns):
         cells = [
-            f'<td width="{width}" valign="top">{render_project(repository, settings)}</td>'
+            f'<td width="{width}" valign="top" style="padding:12px;border:1px solid #d0d7de;border-radius:6px;">{render_project(repository, settings)}</td>'
             for repository in repositories[offset : offset + columns]
         ]
         cells.extend(
@@ -246,7 +246,7 @@ def render_projects(
             for _ in range(columns - len(cells))
         )
         rows.append(f"<tr>\n{''.join(cells)}\n</tr>")
-    return f"<table>\n<tbody>\n{''.join(rows)}\n</tbody>\n</table>"
+    return f"<table cellpadding=\"0\" cellspacing=\"8\" width=\"100%\">\n<tbody>\n{''.join(rows)}\n</tbody>\n</table>"
 
 
 def update_readme(path: Path, generated_content: str) -> bool:

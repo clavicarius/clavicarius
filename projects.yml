@@ -1,14 +1,12 @@
 owner: clavicarius
 
 projects:
-  - repo: HomeLab-compose
-  - repo: ci-platform
-  - repo: mind-5
-  - repo: ct-pdf-split
   - repo: keepical
   - repo: TreeSync
-  - repo: small-webapps
-  - repo: peaceful-8
+  - repo: ci-platform
+  - repo: HomeLab-compose
+  - repo: ct-pdf-split
+  - repo: mind-5
 
 settings:
   columns: 2
