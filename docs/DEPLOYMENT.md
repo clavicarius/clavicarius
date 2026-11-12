@@ -27,11 +27,7 @@ projects:
   # weitere Repositories...
 
 settings:
-  columns: 2
   show_language: true
-  show_topics: true
-  show_stars: true
-  show_forks: true
 ```
 
 **Repositorys hinzufügen/entfernen:**
@@ -42,26 +38,12 @@ settings:
 
 | Setting | Typ | Standard | Beschreibung |
 |---------|-----|----------|-------------|
-| `columns` | Integer | 2 | *(Veraltet - wird für Markdown nicht verwendet)* |
 | `show_language` | Boolean | true | Programmiersprache als Shields.io-Badge anzeigen |
-| `show_topics` | Boolean | true | *(Veraltet - wird in Markdown nicht angezeigt)* |
-| `show_stars` | Boolean | false | *(Veraltet - wird in Markdown nicht angezeigt)* |
-| `show_forks` | Boolean | false | *(Veraltet - wird in Markdown nicht angezeigt)* |
 
-**Hinweis:** In der Markdown-Tabellen-Variante wird nur die `show_language` Einstellung verwendet. Die Tabelle zeigt:
+Die Markdown-Tabelle zeigt:
 - **Projekt**: Repository-Name (verlinkt zu GitHub)
-- **Description**: Volle Beschreibung des Repositories (nicht abgeschnitten)
+- **Description**: Volle Beschreibung des Repositories
 - **Language**: Programmiersprache als Shields.io-Badge
-
-**Beispiel Konfiguration:**
-```yaml
-settings:
-  columns: 2              # Wird ignoriert
-  show_language: true     # Badge anzeigen
-  show_topics: false      # Nicht angezeigt
-  show_stars: false       # Nicht angezeigt
-  show_forks: false       # Nicht angezeigt
-```
 
 ### 2. Generator-Skript (`scripts/generate_readme.py`)
 
@@ -256,15 +238,6 @@ Tests prüfen:
 - Eintrag hinzufügen
 - Push auf `main`
 - Workflow wird automatisch ausgelöst
-
-### Layout ändern:
-- `.github/projects.yml` → `settings.columns` anpassen
-- Workflow wird automatisch neu ausgelöst
-
-### Neue Metadaten anzeigen:
-- GraphQL-Query in [generate_readme.py](../scripts/generate_readme.py) erweitern
-- `render_project()` Funktion updaten
-- Lokale Tests anpassen und durchführen
 
 ---
 
